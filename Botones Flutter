@@ -1,0 +1,94 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Tarea 2',
+      theme: ThemeData(
+
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 181, 63, 63)),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Cesar Antonio Aguilar Rivera'),
+    );
+  }
+}
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+class _MyHomePageState extends State<MyHomePage> {
+  double conta = 10;
+  void _incrementarnumero() {
+    setState(() {
+      conta = conta + 2;
+    });
+  }
+  void _restarnumero() {
+    setState(() {
+      conta = conta - 2;
+    });
+  }
+  void _dividirnumero() {
+    setState(() {
+      conta = conta / 2;
+    });
+  }
+  void _multiplicarnumero() {
+    setState(() {
+      conta = conta * 2;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Yo solo estoy aqui para indicar el numerito xD:',
+            ),
+            Text(
+              '$conta',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+      ),
+  floatingActionButton: Row(
+      children: [
+ FloatingActionButton(
+        onPressed: _incrementarnumero,
+        child: const Text('Suma'),
+          ),
+ FloatingActionButton(
+        onPressed: _restarnumero,
+         child: const Text('Resta'),
+ ),
+ FloatingActionButton(
+        onPressed: _dividirnumero,
+        child: const Text('Division'),
+ ),
+ FloatingActionButton(
+        onPressed: _multiplicarnumero,
+         child: const Text('Multi'),
+ ),
+      ],
+  ),
+    );
+  }
+}
